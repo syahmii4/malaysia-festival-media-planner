@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FestivaMedia — Malaysia Festival Planner</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="auth-bar"><span id="authStatus">Not signed in</span><button id="loginButton">Team login</button><button id="logoutButton" hidden>Sign out</button></div>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">✦</span><span>FestivaMedia</span></div>
+    <p class="eyebrow">MEDIA TEAM WORKSPACE</p>
+    <nav>
+      <a class="active" href="#dashboard">Dashboard</a>
+      <a href="#festivals">Festivals</a>
+      <a href="tasks.html">Poster tasks</a>
+      <a href="team.html">Team</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+    <div class="sidebar-bottom"><div class="sync-dot"></div><span>Last synced today</span></div>
+  </aside>
+
+  <main class="main" id="dashboard">
+    <header class="topbar"><div><p class="eyebrow">OCTOBER 2026</p><h1>Good morning, media team</h1></div><div><button class="secondary" id="discoverFestivals">Discover festivals</button> <button class="primary" id="addFestival">+ Add festival</button></div></header>
+    <section class="hero"><div><p class="eyebrow light">YOUR CREATIVE CALENDAR</p><h2>Make every celebration count.</h2><p>Plan, assign, and finish every festival poster in one place.</p></div><div class="hero-icon">☼</div></section>
+    <section class="stats"><div class="stat"><span class="stat-label">UPCOMING FESTIVALS</span><strong>8</strong><span class="stat-note">next 90 days</span></div><div class="stat"><span class="stat-label">POSTERS IN PROGRESS</span><strong>3</strong><span class="stat-note">keep the momentum</span></div><div class="stat"><span class="stat-label">COMPLETED THIS YEAR</span><strong>24</strong><span class="stat-note">great work ✦</span></div></section>
+    <section class="content-grid"><div class="panel festivals"><div class="panel-heading"><div><p class="eyebrow">UP NEXT</p><h3>Upcoming celebrations</h3></div><a href="#festivals">View all →</a></div><div id="festivalList"></div></div><div class="panel deadlines"><div class="panel-heading"><div><p class="eyebrow">THIS WEEK</p><h3>Priority deadlines</h3></div></div><div class="deadline"><div class="date-badge"><strong>18</strong><span>OCT</span></div><div><strong>Deepavali poster</strong><span>Assigned to Aina</span></div><span class="tag urgent">Due tomorrow</span></div><div class="deadline"><div class="date-badge"><strong>21</strong><span>OCT</span></div><div><strong>Thaipusam announcement</strong><span>Assigned to Daniel</span></div><span class="tag soon">3 days left</span></div><div class="deadline"><div class="date-badge"><strong>24</strong><span>OCT</span></div><div><strong>Chinese New Year concept</strong><span>Unassigned</span></div><span class="tag later">6 days left</span></div></div></section>
+    <footer>FestivaMedia MVP · Role permissions, reminders, and AI discovery are on the roadmap.</footer>
+  </main>
+  <div class="modal-backdrop" id="festivalModal" hidden><form class="modal" id="festivalForm"><button type="button" class="close" id="closeModal">×</button><p class="eyebrow">NEW FESTIVAL</p><h2>Add a celebration</h2><label>Festival name<input name="name" required placeholder="e.g. Hari Raya Aidilfitri"></label><label>Date<input name="event_date" type="date"></label><label>Location<input name="location" value="Malaysia"></label><label>Description<textarea name="description" placeholder="Optional notes"></textarea></label><button class="primary" type="submit">Save festival</button><p class="form-message" id="formMessage"></p></form></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="modal.css" />
+  <link rel="stylesheet" href="auth.css" />
+  <script src="supabase-config.js"></script>
+  <script src="app.js"></script>
+  <script src="discovery.js"></script>
+</body>
+</html>
