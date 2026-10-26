@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Poster Tasks · FestivaMedia</title>
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="tasks.css">
+</head>
+<body>
+  <main class="main tasks-page">
+    <a class="back" href="index.html">← Dashboard</a>
+    <header class="topbar"><div><p class="eyebrow">MEDIA WORKFLOW</p><h1>Poster tasks</h1></div><button class="primary" id="newTask">+ New task</button></header>
+    <section class="panel" id="taskFormPanel" hidden>
+      <form id="taskForm"><h3>Create poster task</h3>
+        <label>Festival<select id="festivalSelect" required></select></label>
+        <label>Deadline<input id="deadline" type="date" required></label>
+        <label>Team member<select id="assignedTo"><option value="">Unassigned</option></select></label>
+        <label>Canva/poster link<input id="posterUrl" type="url" placeholder="https://www.canva.com/"></label>
+        <label>Upload poster<input id="posterFile" type="file" accept="image/*,.pdf"></label>
+        <label class="notes-field">Notes<textarea id="taskNotes" rows="2" placeholder="Brief design instructions or context"></textarea></label>
+        <button class="primary">Save task</button><span id="taskMessage"></span>
+      </form>
+    </section>
+    <section class="panel"><div class="panel-heading"><div><p class="eyebrow">TRACKING</p><h3>All poster tasks</h3></div></div><div id="taskList"><p class="empty">Loading tasks…</p></div></section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="tasks.js"></script>
+</body>
+</html>

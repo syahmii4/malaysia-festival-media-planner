@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Settings · FestivaMedia</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="tasks.css"></head>
+<body><main class="main tasks-page"><a class="back" href="index.html">← Dashboard</a><header class="topbar"><div><p class="eyebrow">ACCOUNT</p><h1>Settings</h1></div></header><section class="panel"><div id="accountInfo"><p class="empty">Loading account…</p></div></section></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script>
+const client=window.supabase.createClient(window.SUPABASE_CONFIG.url,window.SUPABASE_CONFIG.key),info=document.getElementById('accountInfo');
+(async()=>{const {data}=await client.auth.getSession();if(!data.session){info.innerHTML='<p class="empty">Please sign in from the dashboard to view account settings.</p>';return}info.innerHTML=`<h3>Signed-in account</h3><p>${data.session.user.email}</p><button class="primary" id="signOut">Sign out</button>`;document.getElementById('signOut').onclick=async()=>{await client.auth.signOut();location.href='index.html'}})();
+</script><script>
+(async()=>{const {data:session}=await client.auth.getSession();if(!session.session)return;const {data:profile}=await client.from('team_profiles').select('role').eq('id',session.session.user.id).maybeSingle();if(profile){const role=document.createElement('p');role.textContent=`Role: ${profile.role||'designer'}`;document.getElementById('accountInfo').insertBefore(role,document.getElementById('signOut'))}})();
+</script></body></html>
